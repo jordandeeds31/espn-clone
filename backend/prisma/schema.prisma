@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Game {
+  id         String   @id @default(cuid())
+  externalId String   @unique
+  league     String
+  homeTeam   String
+  awayTeam   String
+  homeScore  Int?
+  awayScore  Int?
+  status     String
+  startTime  DateTime
+  updatedAt  DateTime @updatedAt
+}
