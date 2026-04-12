@@ -7,7 +7,7 @@ export const startsGamesJob = () => {
   cron.schedule("*/2 * * * *", async () => {
     try {
       console.log("polling mlb api");
-      const date = new Date().toISOString().split("T")[0];
+      const date = new Date().toLocaleDateString("en-CA");
       const cacheKey = `games:mlb:${date}`;
       const rawGames = await mlbApiService.getTodaysGames();
       const games = transformGames(rawGames);
