@@ -1,27 +1,48 @@
 import { Game } from "@/app/types/games.types"
+import { typography, layout } from "@/app/styles/common.styles"
+import { scorecardStyles } from "./Scorecard.styles"
+import MLB_TEAMS from "@/app/lib/constants/mlbTeams"
 
 type ScoreboardProps = {
     game: Game
 }
 
 const Scorecard = ({ game }: ScoreboardProps) => {
-    console.log(game);
     const { awayTeam, homeTeam, gameState, gameTime } = game;
+
+    const MLB_TEAMS_REVERSE = Object.fromEntries(
+        Object.entries(MLB_TEAMS).map(([abbr, name]) => [name, abbr])
+    );
+
+    const getAbbreviation = (teamName: string): string => {
+        return MLB_TEAMS_REVERSE[teamName] ?? teamName;
+    };
+
     return (
-        <div className="">
+        <div>
             {gameState !== "Preview" ? (
-                <div className="w-50 border-r border-gray-300 p-1.25">
-                    <p className="text-[12px]">{gameState}</p>
-                    <div className="flex justify-between">
-                        <p className="text-[12px]">{awayTeam.team}</p>
-                        <p className="text-[12px]">{awayTeam.score}</p>
+                <div className={scorecardStyles.container}>
+                    <p className={typography.xs}>{gameState}</p>
+                    <div className={layout.row}>
+                        <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
+                        <p className={typography.xs}>{awayTeam.score}</p>
                     </div>
-                    <div className="flex justify-between">
-                        <p className="text-[12px]">{homeTeam.team}</p>
-                        <p className="text-[12px]">{homeTeam.score}</p>
+                    <div className={layout.row}>
+                        <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
+                        <p className={typography.xs}>{homeTeam.score}</p>
                     </div>
                 </div>
-            ) : null}
+            ) : (
+                <div className={scorecardStyles.container}>
+                    <p className={typography.xs}>{gameTime}</p>
+                    <div className={layout.row}>
+                        <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
+                    </div>
+                    <div className={layout.row}>
+                        <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

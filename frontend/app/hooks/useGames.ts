@@ -14,7 +14,7 @@ export const useGames = () => {
         const res = await apiClient.get("/games");
         setGames(res.data.data);
       } catch (err) {
-        setError("Failed to fetch games");
+        setError(`Failed to fetch games: ${err}`);
       } finally {
         setLoading(false);
       }
