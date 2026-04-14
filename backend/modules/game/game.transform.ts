@@ -5,8 +5,14 @@ const transformGames = (games: any[]) => {
     const gameStarted = game.status.abstractGameState !== "Preview";
 
     const gameData: any = {
-      awayTeam: { team: game.teams.away.team.name },
-      homeTeam: { team: game.teams.home.team.name },
+      awayTeam: {
+        team: game.teams.away.team.name,
+        teamId: game.teams.away.team.id,
+      },
+      homeTeam: {
+        team: game.teams.home.team.name,
+        teamId: game.teams.home.team.id,
+      },
       gameState: game.status.abstractGameState,
       gameTime: formatTime(game.gameDate),
     };

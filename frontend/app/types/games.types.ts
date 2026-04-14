@@ -4,6 +4,7 @@ export type GameRecord = {
 };
 
 export type Team = {
+  teamId: number;
   team: string;
   score?: number;
   record?: GameRecord;

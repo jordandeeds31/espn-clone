@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { Game } from "@/app/types/games.types"
-import { typography, layout } from "@/app/styles/common.styles"
+import { typography, layout, logoSize } from "@/app/styles/common.styles"
 import { scorecardStyles } from "./Scorecard.styles"
 import MLB_TEAMS from "@/app/lib/constants/mlbTeams"
 
@@ -22,13 +23,19 @@ const Scorecard = ({ game }: ScoreboardProps) => {
         <div>
             {gameState !== "Preview" ? (
                 <div className={scorecardStyles.container}>
-                    <p className={typography.xs}>{gameState}</p>
+                    <p className={`${typography.xs} mb-2`}>{gameState}</p>
                     <div className={layout.row}>
-                        <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
+                        <div className="flex gap-2">
+                            <Image className="mb-2" src={`https://www.mlbstatic.com/team-logos/${awayTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
+                            <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
+                        </div>
                         <p className={typography.xs}>{awayTeam.score}</p>
                     </div>
                     <div className={layout.row}>
-                        <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
+                        <div className="flex gap-2">
+                            <Image src={`https://www.mlbstatic.com/team-logos/${homeTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
+                            <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
+                        </div>
                         <p className={typography.xs}>{homeTeam.score}</p>
                     </div>
                 </div>
@@ -36,10 +43,16 @@ const Scorecard = ({ game }: ScoreboardProps) => {
                 <div className={scorecardStyles.container}>
                     <p className={typography.xs}>{gameTime}</p>
                     <div className={layout.row}>
-                        <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
+                        <div className="flex gap-2">
+                            <Image className="" src={`https://www.mlbstatic.com/team-logos/${awayTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
+                            <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
+                        </div>
                     </div>
                     <div className={layout.row}>
-                        <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
+                        <div className="flex gap-2">
+                            <Image src={`https://www.mlbstatic.com/team-logos/${homeTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
+                            <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
+                        </div>
                     </div>
                 </div>
             )}

@@ -10,4 +10,5 @@ export const gameController = {
       res.status(400).json({ error: err.message });
     }
   },
+  getGameById: async (req: Request, res: Response) => {},
 };

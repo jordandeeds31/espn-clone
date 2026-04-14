@@ -1,3 +1,3 @@
 export const scorecardStyles = {
-  container: "w-50 border-r border-gray-300 p-1.25",
+  container: "w-40 border-r border-gray-300 p-2",
 };

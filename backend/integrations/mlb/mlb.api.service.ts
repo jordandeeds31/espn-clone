@@ -8,4 +8,5 @@ export const mlbApiService = {
     );
     return res.data.dates[0].games;
   },
+  getGameById: async (id: string) => {},
 };
