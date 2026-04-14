@@ -5,7 +5,7 @@ export const typography = {
 };
 
 export const layout = {
-  row: "flex justify-between",
+  row: "flex justify-between gap-7",
   col: "flex flex-col",
 };
 
