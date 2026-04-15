@@ -13,7 +13,7 @@ type ScoreboardProps = {
 
 const Scorecard = ({ game }: ScoreboardProps) => {
     const [isHovered, setIsHovered] = useState(false);
-    const { awayTeam, homeTeam, gameState, gameTime } = game;
+    const { awayTeam, homeTeam, gameState, gameTime, liveData } = game;
 
     const MLB_TEAMS_REVERSE = Object.fromEntries(
         Object.entries(MLB_TEAMS).map(([abbr, name]) => [name, abbr])
@@ -31,23 +31,23 @@ const Scorecard = ({ game }: ScoreboardProps) => {
                 <div className={scorecardStyles.container} onMouseEnter={() => console.log("Mouse entered")} onMouseLeave={(() => console.log("Mouse leave"))}>
                     <p className={`${typography.xs} mb-2`}>{gameState}</p>
                     <div className="flex">
-                        <div className="border-r border-gray-300 pr-5 mr-2">
+                        <div className="border-r border-gray-100 pr-5 mr-2">
                             <div className={layout.row}>
                                 <div className="flex gap-2">
                                     <Image className="mb-2" src={`https://www.mlbstatic.com/team-logos/${awayTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
                                     <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
                                 </div>
-                                <p className={typography.xs}>{awayTeam.score ? awayTeam.score : 0}</p>
+                                <p className={typography.xs}>{awayTeam.score}</p>
                             </div>
                             <div className={layout.row}>
                                 <div className="flex gap-2">
                                     <Image src={`https://www.mlbstatic.com/team-logos/${homeTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
                                     <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
                                 </div>
-                                <p className={typography.xs}>{homeTeam.score ? homeTeam.score : 0}</p>
+                                <p className={typography.xs}>{homeTeam.score}</p>
                             </div>
                         </div>
-                        <BaseDiamond />
+                        <BaseDiamond outs={liveData?.outs} />
                     </div>
                 </div>
             ) : (

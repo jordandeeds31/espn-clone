@@ -20,6 +20,9 @@ const transformGames = (games: any[]) => {
     if (gameStarted) {
       gameData.awayTeam.score = game.teams.away.score;
       gameData.homeTeam.score = game.teams.home.score;
+      gameData.liveData = {
+        outs: game.linescore?.outs,
+      };
     } else {
       gameData.awayTeam.record = {
         wins: game.teams.away.leagueRecord.wins,

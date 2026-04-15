@@ -20,7 +20,7 @@ export const useGames = () => {
       }
     };
     fetchGames();
-    const interval = setInterval(fetchGames, 2 * 60 * 1000);
+    const interval = setInterval(fetchGames, 30 * 1000);
     return () => clearInterval(interval);
   }, []);
 

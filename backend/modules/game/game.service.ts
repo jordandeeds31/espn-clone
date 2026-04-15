@@ -12,7 +12,7 @@ export const gameService = {
 
     const rawGames = await mlbApiService.getTodaysGames();
     const games = transformGames(rawGames);
-    await cacheService.set(cacheKey, games, 120);
+    await cacheService.set(cacheKey, games, 30);
     return games;
   },
 };
