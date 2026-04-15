@@ -29,7 +29,7 @@ const Scorecard = ({ game }: ScoreboardProps) => {
         <div>
             {gameState !== "Preview" ? (
                 <div className={scorecardStyles.container} onMouseEnter={() => console.log("Mouse entered")} onMouseLeave={(() => console.log("Mouse leave"))}>
-                    <p className={`${typography.xs} mb-2`}>{gameState}</p>
+                    <p className={`${typography.xs} mb-2`}>{gameState === "Live" ? `${liveData?.inningState} ${liveData?.currentInning}` : gameState}</p>
                     <div className="flex">
                         <div className="border-r border-gray-100 pr-5 mr-2">
                             <div className={layout.row}>

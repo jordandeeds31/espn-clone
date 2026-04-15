@@ -12,6 +12,8 @@ export type Team = {
 
 export type LiveData = {
   outs: number;
+  currentInning: number;
+  inningState: number;
 };
 
 export type Game = {

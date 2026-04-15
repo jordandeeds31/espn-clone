@@ -22,6 +22,8 @@ const transformGames = (games: any[]) => {
       gameData.homeTeam.score = game.teams.home.score;
       gameData.liveData = {
         outs: game.linescore?.outs,
+        currentInning: game.linescore?.currentInning,
+        inningState: game.linescore?.inningState,
       };
     } else {
       gameData.awayTeam.record = {
