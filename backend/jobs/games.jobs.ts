@@ -4,7 +4,7 @@ import { cacheService } from "../integrations/redis/redis.service";
 import transformGames from "../modules/game/game.transform";
 
 export const startsGamesJob = () => {
-  cron.schedule("*/30 * * * *", async () => {
+  cron.schedule("*/30 * * * * * *", async () => {
     try {
       console.log("polling mlb api");
       const date = new Date().toLocaleDateString("en-CA");

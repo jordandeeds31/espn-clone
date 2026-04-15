@@ -33,14 +33,14 @@ const Scorecard = ({ game }: ScoreboardProps) => {
                     <div className="flex">
                         <div className="border-r border-gray-100 pr-5 mr-2">
                             <div className={layout.row}>
-                                <div className="flex gap-2">
+                                <div className="flex flex-row justify-center gap-2">
                                     <Image className="mb-2" src={`https://www.mlbstatic.com/team-logos/${awayTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
                                     <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
                                 </div>
                                 <p className={typography.xs}>{awayTeam.score}</p>
                             </div>
                             <div className={layout.row}>
-                                <div className="flex gap-2">
+                                <div className="flex flex-row justify-center gap-2">
                                     <Image src={`https://www.mlbstatic.com/team-logos/${homeTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
                                     <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
                                 </div>
@@ -52,17 +52,23 @@ const Scorecard = ({ game }: ScoreboardProps) => {
                 </div>
             ) : (
                 <div className={scorecardStyles.container} onMouseEnter={() => console.log("Mouse entered")} onMouseLeave={(() => console.log("Mouse Leave"))}>
-                    <p className={typography.xs}>{gameTime} ET</p>
+                    <p className={`${typography.xs} mb-2`}>{gameTime} ET</p>
                     <div className={layout.row}>
-                        <div className="flex gap-2">
-                            <Image className="" src={`https://www.mlbstatic.com/team-logos/${awayTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
-                            <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
+                        <div className="flex gap-2 justify-between w-full">
+                            <div className="flex flex-row justify-center gap-2">
+                                <Image className="mb-2" src={`https://www.mlbstatic.com/team-logos/${awayTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
+                                <p className={typography.xs}>{getAbbreviation(awayTeam.team)}</p>
+                            </div>
+                            <p className={typography.xs}>{awayTeam.record?.wins} - {awayTeam.record?.losses} </p>
                         </div>
                     </div>
                     <div className={layout.row}>
-                        <div className="flex gap-2">
-                            <Image src={`https://www.mlbstatic.com/team-logos/${homeTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
-                            <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
+                        <div className="flex gap-2 justify-between w-full">
+                            <div className="flex flex-row justify-center gap-2">
+                                <Image src={`https://www.mlbstatic.com/team-logos/${homeTeam.teamId}.svg`} alt="" width={logoSize.width} height={logoSize.height} />
+                                <p className={typography.xs}>{getAbbreviation(homeTeam.team)}</p>
+                            </div>
+                            <p className={typography.xs}>{homeTeam.record?.wins} - {homeTeam.record?.losses}</p>
                         </div>
                     </div>
                 </div>
