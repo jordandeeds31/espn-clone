@@ -15,4 +15,7 @@ export const gameService = {
     await cacheService.set(cacheKey, games, 30);
     return games;
   },
+  getGameById: async (gameId: number) => {
+    return mlbApiService.getGameById(gameId);
+  },
 };

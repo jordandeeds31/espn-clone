@@ -5,6 +5,7 @@ const transformGames = (games: any[]) => {
     const gameStarted = game.status.abstractGameState !== "Preview";
 
     const gameData: any = {
+      gameId: game.gamePk,
       awayTeam: {
         team: game.teams.away.team.name,
         teamId: game.teams.away.team.id,
